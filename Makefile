@@ -7,7 +7,7 @@ f90  = mpif90 -cpp -DMPI -DINTELMKL -g
 flag = -O3                              
 
 # blas and lapack libraries
-libs = -llapack -lblas \
+libs = -L ${OPENBLAS_ROOT}/lib -lopenblas\
 
  
 main :  $(obj)

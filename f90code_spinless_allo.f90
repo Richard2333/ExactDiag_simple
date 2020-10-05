@@ -28,7 +28,7 @@ program main
    implicit none
 !~    integer,parameter :: Nv=4
 !~    integer :: atom1(Na,2),atom2(Na,2)
-   integer :: i,j,k,z, m,n,as(-3:3),Na
+   integer :: i,j,k,z, m,n,as(-3:3)!,Na
    real(8) :: t,u2,u1
 
    real(8),allocatable :: evs(:)
@@ -38,9 +38,10 @@ program main
 !~    integer :: indom,oudom
    integer :: ierr,mpii,nsets
 
-
-   read(*,*) Na,nsets
+   open(unit=233,file='set.in')
+   read(233,*) Na,nsets
    Na=Nv*Na
+   !write(*,*) Na,nsets
 
    allocate(vij(Nv))
    allocate(evs(2**Na))
@@ -60,5 +61,6 @@ program main
       vij=4.0*(vij-0.5)
       call exact_4sites(mpii)
    enddo
+   write(*,*) Na,Nsets
 
 end program
